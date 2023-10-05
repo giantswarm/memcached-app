@@ -1,12 +1,3 @@
-name: memcached
-serviceType: managed
-
-project:
-  branch: "[[ .Branch ]]"
-  commit: "[[ .SHA ]]"
-
-image:
-  registry: quay.io
-  name: giantswarm/memcached
-  tag: v0.0.1
-  pullPolicy: IfNotPresent
+memcached:
+  global:
+    imageRegistry: ""

@@ -6,13 +6,56 @@ workflows:
   package-and-push-chart-on-tag:
     jobs:
       - architect/push-to-app-catalog:
-          context: "architect"
-          # executor: "app-build-suite" # uncomment this if you want automatic metadata generation and helm chart linting
-          name: "package and push memcached chart"
-          app_catalog: "giantswarm-playground-catalog"
-          app_catalog_test: "giantswarm-playground-test-catalog"
-          chart: "memcached"
+          context: architect
+          executor: app-build-suite
+          name: playground-catalog
+          app_catalog: giantswarm-playground-catalog
+          app_catalog_test: giantswarm-playground-test-catalog
+          chart: memcached
+          # ct_config: ".circleci/ct-config.yml"
           # Trigger job on git tag.
           filters:
+            tags:
+              only: /^v.*/
+
+      - architect/push-to-app-catalog:
+          context: architect
+          executor: app-build-suite
+          name: control-plane-catalog
+          app_catalog: control-plane-catalog
+          app_catalog_test: control-plane-test-catalog
+          chart: memcached
+          # ct_config: ".circleci/ct-config.yml"
+          # Trigger job on git tag.
+          filters:
+            tags:
+              only: /^v.*/
+
+      - architect/push-to-app-catalog:
+          context: architect
+          executor: app-build-suite
+          name: default-catalog
+          app_catalog: default-catalog
+          app_catalog_test: default-test-catalog
+          chart: memcached
+          # ct_config: ".circleci/ct-config.yml"
+          # Trigger job on git tag.
+          filters:
+            tags:
+              only: /^v.*/
+
+      - architect/push-to-app-collection:
+          context: architect
+          name: aws-app-collection
+          app_catalog: control-plane-catalog
+          app_name: memcached
+          app_namespace: giantswarm
+          app_collection_repo: aws-app-collection
+          disable_force_upgrade: true
+          requires:
+            - control-plane-catalog
+          filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/

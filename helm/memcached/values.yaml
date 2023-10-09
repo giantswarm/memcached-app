@@ -1,27 +1,29 @@
 memcached:
-  global:
-    image:
-      registry: docker.io
-      repository: giantswarm/memcached
-      tag: 1.6.21
-      pullPolicy: IfNotPresent
+  image:
+    registry: docker.io
+    repository: giantswarm/memcached
+    tag: 1.6.21
+    pullPolicy: IfNotPresent
 
-    replicaCount: 1
+  ## Allowed values: standalone (deployment) or high-availability (statefulset)
+  architecture: standalone
 
-    resources:
-      limits: {}
-      requests:
-        memory: 256Mi
-        cpu: 250m
+  replicaCount: 1
 
-    containerSecurityContext:
-      enabled: true
-      runAsUser: 1001
-      runAsNonRoot: true
+  resources:
+    limits: {}
+    requests:
+      memory: 256Mi
+      cpu: 250m
 
-    autoscaling:
-      enabled: false
-      minReplicas: 3
-      maxReplicas: 6
-      targetCPU: 50
-      targetMemory: 50
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsNonRoot: true
+
+  autoscaling:
+    enabled: false
+    minReplicas: 3
+    maxReplicas: 6
+    targetCPU: 50
+    targetMemory: 50

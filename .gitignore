@@ -1,0 +1,2 @@
+helm/memcached/charts/*.tgz
+helm/memcached/Chart.lock

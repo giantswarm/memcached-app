@@ -4,6 +4,7 @@ memcached:
     repository: giantswarm/memcached
     tag: 1.6.21
     pullPolicy: IfNotPresent
+    debug: true
 
   ## Allowed values: standalone (deployment) or high-availability (statefulset)
   architecture: standalone

@@ -1,7 +1,7 @@
 memcached:
   image:
     registry: docker.io
-    repository: giantswarm/memcached
+    repository: giantswarm/bitnami-memcached
     tag: 1.6.21
     pullPolicy: IfNotPresent
     debug: true

@@ -1,9 +1,10 @@
 memcached:
   image:
     registry: docker.io
-    repository: giantswarm/memcached
+    repository: giantswarm/bitnami-memcached
     tag: 1.6.21
     pullPolicy: IfNotPresent
+    debug: true
 
   ## Allowed values: standalone (deployment) or high-availability (statefulset)
   architecture: standalone
@@ -27,3 +28,11 @@ memcached:
     maxReplicas: 6
     targetCPU: 50
     targetMemory: 50
+
+  metrics:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: giantswarm/bitnami-memcached-exporter
+      tag: 0.13.0
+      pullPolicy: IfNotPresent

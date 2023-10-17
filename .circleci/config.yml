@@ -44,18 +44,18 @@ workflows:
             tags:
               only: /^v.*/
 
-      - architect/push-to-app-collection:
-          context: architect
-          name: aws-app-collection
-          app_catalog: control-plane-catalog
-          app_name: memcached
-          app_namespace: giantswarm
-          app_collection_repo: aws-app-collection
-          disable_force_upgrade: true
-          requires:
-            - control-plane-catalog
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+      # - architect/push-to-app-collection:
+      #     context: architect
+      #     name: aws-app-collection
+      #     app_catalog: control-plane-catalog
+      #     app_name: memcached
+      #     app_namespace: giantswarm
+      #     app_collection_repo: aws-app-collection
+      #     disable_force_upgrade: true
+      #     requires:
+      #       - control-plane-catalog
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /^v.*/

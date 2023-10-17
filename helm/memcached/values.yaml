@@ -6,6 +6,12 @@ memcached:
     pullPolicy: IfNotPresent
     debug: true
 
+  commonLabels:
+    application.giantswarm.io/team: "atlas"
+    giantswarm.io/managed-by: "memcached"
+    application.kubernetes.io/version: "0.1.0"
+    helm.sh/chart: "memcached"
+
   ## Allowed values: standalone (deployment) or high-availability (statefulset)
   architecture: standalone
 

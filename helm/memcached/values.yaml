@@ -42,3 +42,9 @@ memcached:
       repository: giantswarm/bitnami-memcached-exporter
       tag: 0.13.0
       pullPolicy: IfNotPresent
+    ## Resources for metrics MUST be set when using the high-availability architecture with autoscaling enabled
+    ## Otherwise the hpa won't be able to monitor the pod's resources usage
+    resources:
+      requests:
+        memory: 10Mi
+        cpu: 1m

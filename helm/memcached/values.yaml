@@ -46,5 +46,5 @@ memcached:
     ## Otherwise the hpa won't be able to monitor the pod's resources usage
     resources:
       requests:
-        memory: 10Mi
-        cpu: 1m
+        memory: 50Mi
+        cpu: 50m

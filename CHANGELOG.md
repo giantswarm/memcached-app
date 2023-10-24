@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Added
+
+- Added resources field to the `metrics` section in the values.
+
 ## [0.1.2] - 2023-10-17
 
 ## [0.1.1] - 2023-10-17

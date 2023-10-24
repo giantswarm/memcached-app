@@ -12,7 +12,7 @@ dependencies:
   - name: memcached
     version: 6.6.7
     repository: oci://registry-1.docker.io/bitnamicharts
-version: 0.1.2
+version: 0.1.3
 type: application
 annotations:
   application.giantswarm.io/team: atlas

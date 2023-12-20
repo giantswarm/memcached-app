@@ -1,6 +1,6 @@
 memcached:
   image:
-    registry: docker.io
+    registry: gsoci.azurecr.io
     repository: giantswarm/bitnami-memcached
     tag: 1.6.21
     pullPolicy: IfNotPresent
@@ -38,7 +38,7 @@ memcached:
   metrics:
     enabled: true
     image:
-      registry: docker.io
+      registry: gsoci.azurecr.io
       repository: giantswarm/bitnami-memcached-exporter
       tag: 0.13.0
       pullPolicy: IfNotPresent

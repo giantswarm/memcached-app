@@ -10,7 +10,7 @@ sources:
   - https://github.com/bitnami/charts/tree/main/bitnami/memcached
 dependencies:
   - name: memcached
-    version: 6.9.0
+    version: 6.11.5
     repository: oci://registry-1.docker.io/bitnamicharts
 version: 0.1.4
 type: application

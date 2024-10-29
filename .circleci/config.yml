@@ -5,44 +5,52 @@ orbs:
 workflows:
   package-and-push-chart-on-tag:
     jobs:
-      - architect/push-to-app-catalog:
-          context: architect
-          executor: app-build-suite
-          name: playground-catalog
-          app_catalog: giantswarm-playground-catalog
-          app_catalog_test: giantswarm-playground-test-catalog
-          chart: memcached
+    - architect/push-to-app-catalog:
+        context: architect
+        executor: app-build-suite
+        name: playground-catalog
+        app_catalog: giantswarm-playground-catalog
+        app_catalog_test: giantswarm-playground-test-catalog
+        chart: memcached
           # ct_config: ".circleci/ct-config.yml"
           # Trigger job on git tag.
-          filters:
-            tags:
-              only: /^v.*/
+        filters:
+          tags:
+            only: /^v.*/
 
-      - architect/push-to-app-catalog:
-          context: architect
-          executor: app-build-suite
-          name: control-plane-catalog
-          app_catalog: control-plane-catalog
-          app_catalog_test: control-plane-test-catalog
-          chart: memcached
+          branches:
+            ignore:
+            - main
+            - master
+    - architect/push-to-app-catalog:
+        context: architect
+        executor: app-build-suite
+        name: control-plane-catalog
+        app_catalog: control-plane-catalog
+        app_catalog_test: control-plane-test-catalog
+        chart: memcached
           # ct_config: ".circleci/ct-config.yml"
           # Trigger job on git tag.
-          filters:
-            tags:
-              only: /^v.*/
+        filters:
+          tags:
+            only: /^v.*/
 
-      - architect/push-to-app-catalog:
-          context: architect
-          executor: app-build-suite
-          name: default-catalog
-          app_catalog: default-catalog
-          app_catalog_test: default-test-catalog
-          chart: memcached
+          branches:
+            ignore:
+            - main
+            - master
+    - architect/push-to-app-catalog:
+        context: architect
+        executor: app-build-suite
+        name: default-catalog
+        app_catalog: default-catalog
+        app_catalog_test: default-test-catalog
+        chart: memcached
           # ct_config: ".circleci/ct-config.yml"
           # Trigger job on git tag.
-          filters:
-            tags:
-              only: /^v.*/
+        filters:
+          tags:
+            only: /^v.*/
 
       # - architect/push-to-app-collection:
       #     context: architect
@@ -59,3 +67,7 @@ workflows:
       #         ignore: /.*/
       #       tags:
       #         only: /^v.*/
+          branches:
+            ignore:
+            - main
+            - master
